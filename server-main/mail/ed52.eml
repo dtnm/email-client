@@ -1,0 +1,242 @@
+Received: from SY8PR01MB9313.ausprd01.prod.outlook.com (2603:10c6:10:264::10)
+ by MEYPR01MB6926.ausprd01.prod.outlook.com with HTTPS; Sat, 2 Mar 2024
+ 01:19:07 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass;
+ b=HXMlDltPg0vW1eOKWPm7FB4oF32tjBtYoQubNsl+mo18m9dhOuQ8KajmxZ0QOpzTL812nahE9gZcbBMKZXVEwQrHOKnsSCaGzsSO7keP7QoPtPJvvv3dIM4RkaJ50/IOhuXrbl6IwMLKwZOBPZsgqhKJgNMgEf63jO1u/VcCTiRX1v7T5NbZY0EIzUb8VfCw4Zm9fDdYjV8q0NhF9sQ6ApdHFmiYUVb8rNYVKi/XgVfzBUCcYhOzcrE/vooU+k5i/lk2mdbl2Wn9BzLtxyckcRY+dagtOrisX5SgWzIUVNqWABEVenqS7BNT4WwC1+pw9sKAfDrGra/VAxr+OwtUpg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=F5Iw1IuGdVPITpiyJ1k6qxHIinbKwsrfAsSx0SisIBc=;
+ b=dV/BsN+DGu4WGd3AHjO5qt814LOVoB5POgsXKP98fPoJoYNVDTJR2IpvSMZopjucdUjD4/YTCaIs7nNqYb3tUpJT9i5chOnYxW8GNGcmCXpOqRNCyrirZteYeJZmT9q9sB9Ckf0+dnkwDUksVwc8RECPyNNRvwzAxlkVppxxqDL0S8Ub2iWGigsnkh9yRWlEHLC67+EZIENHx4nui1l64PvhVXz+unLskwDdnol0+uaI3CHbaXZHgZ451SB+70o7uX7utGn6fNz9RRmGUl1J2jR2+RV7WBHtDxA22nTXd6SWawEK9XrjPI3+LGOB03nL+iFYUTtLiGjue/1pRZbkCA==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=fail (sender ip is
+ 103.96.22.101) smtp.rcpttodomain=unimelb.edu.au
+ smtp.mailfrom=bounce.au.edstem.org; dmarc=fail (p=reject sp=reject pct=0)
+ action=none header.from=edstem.org; dkim=fail (body hash did not verify)
+ header.d=edstem.org; dkim=fail (body hash did not verify)
+ header.d=amazonses.com; arc=pass (0 oda=0 ltdi=0 93)
+Received: from SY5PR01CA0002.ausprd01.prod.outlook.com (2603:10c6:10:1fa::20)
+ by SY8PR01MB9313.ausprd01.prod.outlook.com (2603:10c6:10:264::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.34; Sat, 2 Mar
+ 2024 01:19:06 +0000
+Received: from SY2PEPF00004FF5.ausprd01.prod.outlook.com
+ (2603:10c6:10:1fa:cafe::2c) by SY5PR01CA0002.outlook.office365.com
+ (2603:10c6:10:1fa::20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.34 via Frontend
+ Transport; Sat, 2 Mar 2024 01:19:06 +0000
+Authentication-Results: spf=fail (sender IP is 103.96.22.101)
+ smtp.mailfrom=bounce.au.edstem.org; dkim=fail (body hash did not verify)
+ header.d=edstem.org;dmarc=fail action=none
+ header.from=edstem.org;compauth=softpass reason=202
+Received-SPF: Fail (protection.outlook.com: domain of bounce.au.edstem.org
+ does not designate 103.96.22.101 as permitted sender)
+ receiver=protection.outlook.com; client-ip=103.96.22.101;
+ helo=au-smtp-inbound-delivery-1.mimecast.com
+Received: from au-smtp-inbound-delivery-1.mimecast.com (103.96.22.101) by
+ SY2PEPF00004FF5.mail.protection.outlook.com (10.167.241.7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7362.11 via Frontend Transport; Sat, 2 Mar 2024 01:19:05 +0000
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dkim.mimecast.com; s=201903; t=1709342345;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:references:references:dkim-signature;
+	bh=F5Iw1IuGdVPITpiyJ1k6qxHIinbKwsrfAsSx0SisIBc=;
+	b=OFDZJDWqf+VE8uVVb+T0ayoux0BW4+eCN5auwdhzKmD1TUv8KMoPrTKth1jd0aNGeMdjWv
+	eeijrlllKCjbf7b13tBifp0UCid+grEzqRX9vCSY2AF56h3u9aJ0SIR3F1369zbCdyRWgB
+	ISNryFCcGm325+AxlcDrySu8r6x2930wt7pI4raT1IHJIs3qqWHKPeYWRuR5IBJZWaIAuR
+	e4WMuzUXLp5rxw1OJKB7anhfzAW5KadAXrBkCU/sxrKEoBPojlThglgi51eYau48mpRtBo
+	E9bAyHGiDQ7sDDokMJpveuYnhdIwzrS+CkAzwbk8QWevUccUsjCw6aoKnIKyow==
+ARC-Seal: i=1; s=201903; d=dkim.mimecast.com; t=1709342345; a=rsa-sha256;
+	cv=none;
+	b=mGqLcDXserqkP4zJylvdZAMvPrsRC34TjAGPb6T824LpBF9uVDCOMKTUBjeS5Vo0S4S3UB
+	Pw63X4S0hzVmUfiiy8xbd84DftifhI1l/SVNM0gLylKA/0o0GT9jIAgFr12fMMtjR2gUNp
+	NIX5qt2F7l8BqyJnB+3df2NF3Il765233067yUSXb4MkzlFKpFOwYeVhi8yTYpzdqXP26l
+	zky6xmpxMdTKG11opebjLfIZPnb5OVWq8LMCtGagJi2IkiOHi1BZaUKF5q+WMOzNO5OKis
+	tM1dcGW7+RplwfwzDb5dHO1uOKABmPVgaLJd1LHKYt32iARhI+kCtB33iXZPwA==
+ARC-Authentication-Results: i=1;
+	relay.mimecast.com;
+	dkim=pass header.d=edstem.org header.s=zrocvnsa7dapkra3be4rnaqxhwz5alnh header.b=CTwkvpSc;
+	dkim=pass header.d=amazonses.com header.s=ulrbq2zjesb42hdt6rpnifgor3epinsy header.b=iz0qSukz;
+	dmarc=pass (policy=reject) header.from=edstem.org;
+	spf=pass (relay.mimecast.com: domain of 0108018dfcbe3ffe-54af5214-bf81-4ad2-b31d-6eecb5bdb08d-000000@bounce.au.edstem.org designates 69.169.235.13 as permitted sender) smtp.mailfrom=0108018dfcbe3ffe-54af5214-bf81-4ad2-b31d-6eecb5bdb08d-000000@bounce.au.edstem.org
+Received: from b235-13.smtp-out.ap-southeast-2.amazonses.com
+ (b235-13.smtp-out.ap-southeast-2.amazonses.com [69.169.235.13]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ au-mta-100-80-04Pb5POOfPzuyd9dTwg-1; Sat, 02 Mar 2024 12:19:03 +1100
+X-MC-Unique: 80-04Pb5POOfPzuyd9dTwg-1
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=zrocvnsa7dapkra3be4rnaqxhwz5alnh; d=edstem.org; t=1709342343;
+	h=Mime-Version:Date:Reply-To:Message-ID:References:From:To:Subject:Content-Type;
+	bh=AZmuq1eTntiAVvCGS7ijyUDl2y5iCvuxe7XAK6EeBcg=;
+	b=CTwkvpScsgTtLNDGq6+x0UhtBd7K7ODAoTgxrHzu4PDcs/qe4p4SyJWoBldIhf8b
+	LARrtkdG9Uck4ik6h4rvykZP1TyQWgmbxp3s6yIcH1ITe+zfW6ExgKtljLc9PTkMGZ0
+	0Wlbt4tgQIUFavrAuKfiaEGidAz65t+wvpaxtXlnKofNO5Nr4lCnXlkZTItqJu1iqoV
+	ehtXNQLE+MDXiCPcvBNXY8TnyRPKzDYmT0gbNdFWNB/U7GdfnnhpZkaiyMzjuNKOGHv
+	jPHUUsathTvSNse+OGp7S5JJ3FpqSfG3pjEIx8hnKCf0Zh1hjG0ioetj5xeMfCzJ97u
+	zyjlTJbrIw==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ulrbq2zjesb42hdt6rpnifgor3epinsy; d=amazonses.com; t=1709342343;
+	h=Mime-Version:Date:Reply-To:Message-ID:References:From:To:Subject:Content-Type:Feedback-ID;
+	bh=AZmuq1eTntiAVvCGS7ijyUDl2y5iCvuxe7XAK6EeBcg=;
+	b=iz0qSukzYNNhrgdAEIc+Du0m5O+gdjjUhcRTtA8ugN46sM1xlCZ+SL2zMzUiONAp
+	PN/a//C5nT7hF8IliMYlS1PplfdywvUK9K63Bwxf6d9ipTTRcl9XM/lzy98e4IQPB1a
+	EK6QEZIwYTFhTBoewJquWxfrGjEdwQSBUMlZV3PY=
+Date: Sat, 2 Mar 2024 01:19:03 +0000
+Reply-To: COMP30023 <reply+zzmoybqctxl7thre5@reply.au.edstem.org>
+Message-ID: <0108018dfcbe3ffe-54af5214-bf81-4ad2-b31d-6eecb5bdb08d-000000@ap-southeast-2.amazonses.com>
+References: <courses/15616/discussion/announcement/1773059/1@reply.au.edstem.org>
+From: COMP30023 via Ed <notification@edstem.org>
+To: stetang@unimelb.edu.au
+Subject: COMP30023: VM Connection Guide
+Feedback-ID: 1.ap-southeast-2.sda27ZL6wrDJeDilrfxWSJpFkTUrhUUnl3G+N0UIP1s=:AmazonSES
+X-SES-Outgoing: 2024.03.02-69.169.235.13
+Authentication-Results-Original: relay.mimecast.com;	dkim=pass
+ header.d=edstem.org header.s=zrocvnsa7dapkra3be4rnaqxhwz5alnh
+ header.b=CTwkvpSc;	dkim=pass header.d=amazonses.com
+ header.s=ulrbq2zjesb42hdt6rpnifgor3epinsy header.b=iz0qSukz;	dmarc=pass
+ (policy=reject) header.from=edstem.org;	spf=pass (relay.mimecast.com: domain
+ of
+ 0108018dfcbe3ffe-54af5214-bf81-4ad2-b31d-6eecb5bdb08d-000000@bounce.au.edstem.org
+ designates 69.169.235.13 as permitted sender)
+ smtp.mailfrom=0108018dfcbe3ffe-54af5214-bf81-4ad2-b31d-6eecb5bdb08d-000000@bounce.au.edstem.org
+X-Mimecast-Spam-Score: 1
+Return-Path: 0108018dfcbe3ffe-54af5214-bf81-4ad2-b31d-6eecb5bdb08d-000000@bounce.au.edstem.org
+X-MS-Exchange-Organization-ExpirationStartTime: 02 Mar 2024 01:19:05.9748
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 31cd7ec7-7be9-46d0-c99c-08dc3a56c105
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 0e5bf3cf-1ff4-46b7-9176-52c538c22a4d:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SY2PEPF00004FF5:EE_|SY8PR01MB9313:EE_|MEYPR01MB6926:EE_
+X-MS-Exchange-Organization-AuthSource: SY2PEPF00004FF5.ausprd01.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 31cd7ec7-7be9-46d0-c99c-08dc3a56c105
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:3
+X-Forefront-Antispam-Report: CIP:103.96.22.101;CTRY:AU;LANG:en;SCL:-1;SRV:;IPV:NLI;SFV:SFE;H:au-smtp-inbound-delivery-1.mimecast.com;PTR:au-smtp-inbound-delivery-1.mimecast.com;CAT:NONE;SFS:;DIR:INB
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Mar 2024 01:19:05.9748
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 31cd7ec7-7be9-46d0-c99c-08dc3a56c105
+X-MS-Exchange-CrossTenant-Id: 0e5bf3cf-1ff4-46b7-9176-52c538c22a4d
+X-MS-Exchange-CrossTenant-AuthSource: SY2PEPF00004FF5.ausprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SY8PR01MB9313
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.4485579
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.7339.028
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary=2ca9a1f422c362ef35a6db6fcd824160d937ec32139c44397a17f29e80b4
+
+--2ca9a1f422c362ef35a6db6fcd824160d937ec32139c44397a17f29e80b4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+COMP30023: VM Connection Guide
+
+Your instructor Qifan Deng posted an announcement on Ed.
+
+
+https://edstem.org/au/courses/15616/discussion/1773059
+
+
+
+--2ca9a1f422c362ef35a6db6fcd824160d937ec32139c44397a17f29e80b4
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><l=
+ink href=3D"https://fonts.googleapis.com/css?family=3DOpen+Sans:400,700" re=
+l=3D"stylesheet">
+</head>
+
+<body style=3D"background-color: #f2f2f2;font-family: 'Open Sans', helvetic=
+a, arial, sans-serif;font-size: 15px;color: #444444;margin: 0;padding: 0;">
+
+=09<div style=3D"display: none;font-size: 1px;line-height: 1px;max-height: =
+0px;max-width: 0px;opacity: 0;overflow: hidden;">Your instructor Qifan Deng=
+ posted an announcement on Ed. Simply click the link to view the announceme=
+nt.</div>
+=09<div style=3D"display: none;font-size: 1px;line-height: 1px;max-height: =
+0px;max-width: 0px;opacity: 0;overflow: hidden;">=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;</div>
+
+=09<table cellspacing=3D"10" cellpadding=3D"0" align=3D"center" style=3D"fo=
+nt-size: inherit;max-width: 600px;width: 100%;background-color: #f2f2f2;">
+=09=09<tr>
+=09=09=09<td style=3D"padding: 15px;background-color: #50288c;text-align: c=
+enter;">
+=09=09=09=09<a href=3D"https://edstem.org/au">
+=09=09=09=09=09<img style=3D"width: 40px; height: 30px;" src=3D"https://eds=
+tem.org/email-images/ed-logo.png" width=3D"40" height=3D"30" alt=3D"Ed">
+=09=09=09=09</a>
+=09=09=09</td>
+=09=09</tr>
+=09=09<tr>
+=09=09=09<td style=3D"background-color: white;">
+=09=09=09=09
+<div style=3D"text-align: center;padding: 20px 20px 0 20px;">
+=09
+=09<div style=3D"padding-bottom: 20px;font-size: 150%;font-weight: bold;">C=
+OMP30023: VM Connection Guide</div>
+=09
+=09<div style=3D"padding-bottom: 20px;">Your instructor Qifan Deng posted a=
+n announcement on Ed.</div>
+=09
+=09<div style=3D"padding-bottom: 20px;">
+=09=09<a href=3D"https://edstem.org/au/courses/15616/discussion/1773059" st=
+yle=3D"display: inline-block;font-weight: bold;background-color: #0070ff;bo=
+rder: none;color: white;padding: 6px 14px;font-size: 100%;text-decoration: =
+none;vertical-align: middle;border-radius: 3px;">View announcement</a>
+=09</div>
+=09
+=09
+</div>
+
+=09=09=09</td>
+=09=09</tr>
+=09=09
+=09</table>
+
+</body>
+
+</html>
+
+--2ca9a1f422c362ef35a6db6fcd824160d937ec32139c44397a17f29e80b4--

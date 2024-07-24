@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "socket.h": "c",
+        "email_client.h": "c",
+        "inet.h": "c",
+        "utils.h": "c",
+        "sys_header.h": "c",
+        "imap.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

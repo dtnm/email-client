@@ -1,0 +1,7 @@
+.*                  @yc
+certs/              @yc
+compose.yml         @yc
+Dockerfile          @yc
+mail/               @yc
+README.md           @yc
+dovecot*            @yc

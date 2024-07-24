@@ -1,0 +1,15 @@
+In general, we should never commit private key material to a repository,
+as they can be used in MITM attacks.
+
+CA
+openssl genrsa -out ca.key 4096
+openssl req -x509 -new -nodes -key ca.key -sha256 -days 60 -out ca.crt -subj '/CN=COMP30023 CA/O=COMP30023'
+
+Server
+openssl genrsa -out server.key 4096
+openssl req -new -key server.key -out server.csr -subj '/CN=COMP30023 Server/O=COMP30023'
+openssl x509 -req \
+    -extfile <(printf "subjectAltName=DNS:unimelb-comp30023-2024.cloud.edu.au") -days 60 \
+    -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
+
+cat server.crt ca.crt > chain.pem

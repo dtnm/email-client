@@ -1,0 +1,9 @@
+services:
+  mailserv:
+    build: .
+    network_mode: host
+    restart: always
+    volumes:
+      - ./certs/server.crt:/etc/dovecot/server.crt
+      - ./certs/server.key:/etc/dovecot/server.key
+      - ./certs/chain.pem:/etc/dovecot/chain.pem
